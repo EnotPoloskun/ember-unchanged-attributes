@@ -1,7 +1,7 @@
 {
-  "name": "unchanged-attributes",
+  "name": "ember-unchanged-attributes",
   "version": "0.0.0",
-  "description": "The default blueprint for ember-cli addons.",
+  "description": "Allows to get unchanged value of attributes of model object after they were changed.",
   "keywords": [
     "ember-addon"
   ],
