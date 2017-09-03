@@ -1,12 +1,13 @@
 {
   "name": "ember-unchanged-attributes",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Allows to get unchanged value of attributes of model object after they were changed.",
   "keywords": [
-    "ember-addon"
+    "ember-addon",
+    "unchanged attributes"
   ],
   "license": "MIT",
-  "author": "",
+  "author": "Pavel Astraukh",
   "directories": {
     "doc": "doc",
     "test": "tests"
@@ -35,7 +36,7 @@
     "ember-cli-sri": "^2.1.0",
     "ember-cli-test-loader": "^1.1.0",
     "ember-cli-uglify": "^1.2.0",
-    "ember-data": "^2.10.0",
+    "ember-data": "~2.13.0",
     "ember-disable-prototype-extensions": "^1.1.0",
     "ember-export-application-global": "^1.0.5",
     "ember-load-initializers": "^0.5.1",

@@ -2,5 +2,5 @@
 'use strict';
 
 module.exports = {
-  name: 'unchanged-attributes'
+  name: 'ember-unchanged-attributes'
 };
