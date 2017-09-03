@@ -1,5 +1,7 @@
 # ember-unchanged-attributes
 
+[![Build Status](https://travis-ci.org/EnotPoloskun/ember-unchanged-attributes.svg?branch=master)](https://travis-ci.org/EnotPoloskun/ember-unchanged-attributes)
+
 Ember plugin which allows you to get initial value of model object's attributes after they were changed.
 
 Sometimes, you don't need to update attributes values in view until model is saved. For example, you can have edit form in modal and you don't want values to update on background until model object is successfully saved, because it can confuse user.
