@@ -1,27 +1,63 @@
-# unchanged-attributes
+# ember-unchanged-attributes
 
-This README outlines the details of collaborating on this Ember addon.
+Ember plugin which allows you to get initial value of model object's attributes after they were changed.
+
+Sometimes, you don't need to update attributes values in view until model is saved. For example, you can have edit form in modal and you don't want values to update on background until model object is successfully saved, because it can confuse user.
+This plugin can help you with this issue!
 
 ## Installation
 
-* `git clone <repository-url>` this repository
-* `cd unchanged-attributes`
-* `npm install`
-* `bower install`
+`ember install ember-unchanged-attributes`
 
-## Running
+## Usage
 
-* `ember serve`
-* Visit your app at [http://localhost:4200](http://localhost:4200).
+First, you need to import module and extend needed model.
 
-## Running Tests
+```js
+import UnchangedAttributesMixin from 'ember-unchanged-attributes';
 
-* `npm test` (Runs `ember try:each` to test your addon against multiple Ember versions)
-* `ember test`
-* `ember test --server`
+DS.Model.extend(UnchangedAttributesMixin, {
+  name: attr(),
+});
+```
+After this, you can access unchanged value of any attribute by `unchanged#{AttrName}` property
 
-## Building
+```js
+let user = this.store.createRecord('user', { name: 'Jack' });
+user.get('unchangedName');
+> "Jack"
+user.set('name', 'Billy');
+user.get('unchangedName');
+> "Jack"
+```
 
-* `ember build`
+After you save object, it will reset unchanged attributes
 
-For more information on using ember-cli, visit [https://ember-cli.com/](https://ember-cli.com/).
+```js
+user.save().then((user) => {
+  user.get('unchangedName') // => will equal to "Billy"
+});
+```
+
+Also, if you wan't to have unchanged properties for specific attributes only, you can specify ```_unchangedAttributesList``` in your model. And you can also specify prefix for these attributes with ```_unchangedPrefix```.
+
+```js
+import UnchangedAttributesMixin from 'ember-unchanged-attributes';
+
+DS.Model.extend(UnchangedAttributesMixin, {
+  _unchangedPrefix: 'original',
+  _unchangedAttributesList: ['content'],
+
+  title: attr(),
+  content: attr(),
+});
+
+...
+
+let article = this.store.createRecord('article', { title: 'Best Article', content: 'Best Content' })
+article.set('content', 'Lorem Ipsum')
+article.get('originalContent')
+> "Best Content"
+article.get('originalTitle')
+> Will throw exception, since 'title' is not specified in '_unchangedAttributesList'
+```
