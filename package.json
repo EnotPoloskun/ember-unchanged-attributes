@@ -12,7 +12,7 @@
     "doc": "doc",
     "test": "tests"
   },
-  "repository": "",
+  "repository": "https://github.com/EnotPoloskun/ember-unchanged-attributes.git",
   "scripts": {
     "build": "ember build",
     "start": "ember server",
