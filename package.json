@@ -1,6 +1,6 @@
 {
   "name": "ember-unchanged-attributes",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Allows to get unchanged value of attributes of model object after they were changed.",
   "keywords": [
     "ember-addon",
